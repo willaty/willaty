@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>willaty</title>
+  <title>类型声明 | willaty</title>
   <meta name="author" content="willaty">
   
   <meta name="description" content="Enn...Why?">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="类型声明"/>
   <meta property="og:site_name" content="willaty"/>
 
   
@@ -86,50 +86,32 @@
 
   <div class="container">
   	<div class="content">
-    	 <div class="page-header page-header-inverse ">
-  <h1 class="title title-inverse ">willaty</h1>
-</div>
+    	 
 
-<div class="row page">
 
 	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> 类型声明</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
 	<div class="col-md-9">
 	
 
-		<div class="slogan">
-      <i class="fa fa-heart"></i>
-      Yet another bootstrap theme.
-</div>    
-		<div id="top_search"></div>
-		<div class="mypage">
-		
-		<!-- title and entry -->
-        <!-- render top articles firstly -->
-        
-		
-            
-		
-            
-		
-        
-        <!-- render other articles -->
-        
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-04-28 </div>
-			<div class="article-title"><a href="/2017/04/28/var/" >类型声明</a></div>						
-		</h3>
-	
+	<!-- content -->
+	<div class="mypage">		
+	  		
 
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="各种声明符"><a href="#各种声明符" class="headerlink" title="各种声明符:"></a>各种声明符:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">`存储类说明符*: auto、register、static、extern.`</div><div class="line">-&gt;在声明时，存储类修饰符最多只能使用一个，而且无法用在typedef声明中.</div><div class="line">`类型限定符`是指: const、volatile、restrict.</div><div class="line">-&gt;声明中可以使用多个类型限定符，顺序没有限制.</div><div class="line">-&gt;另外，类型限制符可以用在typeof声明中</div></pre></td></tr></table></figure>
+	  <h2 id="各种声明符"><a href="#各种声明符" class="headerlink" title="各种声明符:"></a>各种声明符:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">`存储类说明符*: auto、register、static、extern.`</div><div class="line">-&gt;在声明时，存储类修饰符最多只能使用一个，而且无法用在typedef声明中.</div><div class="line">`类型限定符`是指: const、volatile、restrict.</div><div class="line">-&gt;声明中可以使用多个类型限定符，顺序没有限制.</div><div class="line">-&gt;另外，类型限制符可以用在typeof声明中</div></pre></td></tr></table></figure>
 <h2 id="类型声明优先级"><a href="#类型声明优先级" class="headerlink" title="类型声明优先级"></a>类型声明优先级</h2><p>括号&gt;后缀&gt;前缀,从内到外阅读即可.<br>函数与数组不能相互派生,大小都不可知.<br><code>只有指针,函数,数组能传递下去定义(函数参数不算),出现内置类型则终止.</code><br><code>英文:pointer to; function(int) returning int; array of</code></p>
 <h2 id="关于const的锁"><a href="#关于const的锁" class="headerlink" title="关于const的锁:"></a>关于const的锁:</h2><p>锁住的是后面的对象; 是<em>则锁内容,是标识符则锁指向.<br>或用英文理解:char const </em>p; //p is a pointer to read-only char.<br>ps: const锁什么什么在先,锁内容:常量指针; 锁指针:指针常量.<br>ps: 在primer中,用顶层const(top-level const)表示锁的是指针,底层(low-level const)锁的是指针指向常量.</p>
 <h2 id="内置类型初始化"><a href="#内置类型初始化" class="headerlink" title="内置类型初始化:"></a>内置类型初始化:</h2><p>在函数内定义的内置对象若没被初始化,值未定义.<br>在函数外定义的,<code>默认初始化为0</code>.<br>列表初始化,C++11新标准,(如果可能出现信息丢失,则会出错,不能初始化)</p>
@@ -148,121 +130,101 @@
 <blockquote>
 <p>辛苦总结,转载请注明出处,共享共成长:<a href="http://blog.leanote.com/willaty" target="_blank" rel="external">http://blog.leanote.com/willaty</a></p>
 </blockquote>
-
-	
+	  
 	</div>
-</div>
 
-           
-		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-04-26 </div>
-			<div class="article-title"><a href="/2017/04/26/hello-world/" >Hello World</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h1 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h1><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-	
-	</div>
-</div>
-
-           
-		
-
-		</div>
-
-		<!-- pagination -->
-		<div>
-  		<center>
-		<div class="pagination">
+	<div>
+  	<center>
+	<div class="pagination">
 <ul class="pagination">
 	 
+				
+    	<li class="prev"><a href="/2017/04/26/hello-world/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+          <li class="next disabled"><a>Next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+        
+	
 </ul>
 </div>
 
-  		</center>
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+    <div class="bdsharebuttonbox">
+        <a href="#" class="bds_more" data-cmd="more"></a>
+        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+        <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+        <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+        <a href="#" class="bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+        <a href="#" class="bds_evernotecn" data-cmd="evernotecn" title="分享到印象笔记"></a>
+        <a href="#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a>
+        <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+    </div>
+    <script>
+        window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};
+        with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+
+
+        
+
+    
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2017-04-28 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#各种声明符"><span class="toc-article-text">各种声明符:</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#类型声明优先级"><span class="toc-article-text">类型声明优先级</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#关于const的锁"><span class="toc-article-text">关于const的锁:</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#内置类型初始化"><span class="toc-article-text">内置类型初始化:</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#常量表达式"><span class="toc-article-text">常量表达式:</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#字面值常量"><span class="toc-article-text">字面值常量:</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#注意"><span class="toc-article-text">注意:</span></a></li></ol></li></ol>
 		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
 
+	</div>
 		
-		
-	</div> <!-- col-md-9 -->
 
-	
-		<div class="col-md-3">
-	<div id="sidebar">
-	
-			
-  <div id="site_search">
-   <div class="form-group">
-    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
-   </div>  
-  <div id="local-search-result"></div>
-  </div>
+</div><!-- row -->
 
-
-		
-			
-		
-			
-
-		
-			
-<div class="widget">
-  <h4>Recent Posts</h4>
-  <ul class="entry list-unstyled">
-    
-      <li>
-        <a href="/2017/04/28/var/" ><i class="fa fa-file-o"></i>类型声明</a>
-      </li>
-    
-      <li>
-        <a href="/2017/04/26/hello-world/" ><i class="fa fa-file-o"></i>Hello World</a>
-      </li>
-    
-  </ul>
-</div>
-
-		
-			
-<div class="widget">
-	<h4>Links</h4>
-	<ul class="blogroll list-unstyled">
-	
-		<li><i class="fa fa-github"></i><a href="https://github.com/wzpan/freemind/" title="Freemind's Github repository." target="_blank"]);">Freemind</a></li>
-	
-		<li><i class="fa fa-github"></i><a href="http://www.github.com/wzpan" title="My Github account." target="_blank"]);">My Github</a></li>
-	
-		<li><i class="fa fa-linkedin"></i><a href="http://www.linkedin.com/in/hahack" title="My Linkin account." target="_blank"]);">My LinkedIn</a></li>
-	
-	</ul>
-</div>
-
-
-		
-	</div> <!-- sidebar -->
-</div> <!-- col-md-3 -->
-
-	
-	
-</div> <!-- row-fluid -->
 
 
 	</div>
