@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-28T14:20:06.548Z</updated>
+  <updated>2017-04-29T08:43:51.207Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,13 +16,90 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关于const</title>
+    <link href="http://yoursite.com/2017/04/29/Test/"/>
+    <id>http://yoursite.com/2017/04/29/Test/</id>
+    <published>2017-04-29T05:26:28.725Z</published>
+    <updated>2017-04-29T08:43:51.207Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-几种使用情形"><a href="#1-几种使用情形" class="headerlink" title="1. 几种使用情形"></a>1. 几种使用情形</h2><h3 id="1-针对一个变量"><a href="#1-针对一个变量" class="headerlink" title="1. 针对一个变量"></a>1. 针对一个变量</h3><ul>
+<li>const int i = 2;</li>
+<li>在编译期间会发生const folding和copy propagation.</li>
+<li>必须马上初始化.</li>
+<li>默认是内部链接,可用extern声明,其他文件则可见.</li>
+<li><p>如果用非常量表达式初始化,则也是运行时const.</p>
+</li>
+<li><p>const static i = 2;</p>
+</li>
+<li>兼具const和static的特性:可在类中初始化(常量),不分配内存(常量表中).<h3 id="2-针对一个函数"><a href="#2-针对一个函数" class="headerlink" title="2. 针对一个函数"></a>2. 针对一个函数</h3></li>
+<li>const int func(const int i);</li>
+<li>const锁定的返回值,被赋值的必须是const.(如果是值传递没什么意义)</li>
+<li><p>const修饰参数,传参的不一定是const,但在函数中不能改变.</p>
+</li>
+<li><p>class B{ void func() const; };</p>
+</li>
+<li>不能调用非const成员函数(mutable成员除外).</li>
+<li>只能读,不能修改非static数据成员,<code>能修改static成员</code>!!<h3 id="3-针对一个类"><a href="#3-针对一个类" class="headerlink" title="3. 针对一个类"></a>3. 针对一个类</h3></li>
+<li>类中const成员初始化:</li>
+<li>最好在构造函数初始化,不要在类中初始化.(不同标准不一定允许)</li>
+<li>const对象只能调用const成员函数.</li>
+<li>类中的const和C语言一样,是运行时常量,不能作为数组维数.</li>
+<li>但以下两种情况可以取代#define,static const或enum{}//enum不占空间.</li>
+<li>两种方法修改:const_cast和mutable.(用第二种好点,让人知道它可能被改)<h3 id="4-常见错误"><a href="#4-常见错误" class="headerlink" title="4. 常见错误:"></a>4. 常见错误:</h3></li>
+<li>int *p = i; //const int i = 0;</li>
+<li>int &amp;q = i;</li>
+<li>可访问,int w = i;如果p和q是常量的也可以赋值.<h2 id="2-C-与C中const的区别"><a href="#2-C-与C中const的区别" class="headerlink" title="2. C++与C中const的区别"></a>2. C++与C中const的区别</h2><h3 id="1-C语言实现"><a href="#1-C语言实现" class="headerlink" title="1. C语言实现:"></a>1. C语言实现:</h3></li>
+<li>是运行时const,不能定义数组长度.</li>
+<li>默认是外部链接,不同文件中可能冲突.<h3 id="2-C-实现"><a href="#2-C-实现" class="headerlink" title="2. C++实现:"></a>2. C++实现:</h3></li>
+<li>是编译时常量,和#define相似</li>
+<li>默认内部链接,可用extern声明</li>
+<li>编译器默认不为其分配地址,除非extern或有引用到地址.</li>
+<li>一般在符号表中存在,某些情况分配内存.<h2 id="3-关于const的内存"><a href="#3-关于const的内存" class="headerlink" title="3. 关于const的内存:"></a>3. 关于const的内存:</h2><h3 id="这些情况则分配内存"><a href="#这些情况则分配内存" class="headerlink" title="这些情况则分配内存:"></a>这些情况则分配内存:</h3></li>
+<li>用extern; 取地址操作; 非常量表达式初始化;</li>
+<li>其他时候const只在符号表中,在编译期间直接替换.</li>
+<li>据说大对象也分配,未确定.<h3 id="对比-define"><a href="#对比-define" class="headerlink" title="对比#define:"></a>对比#define:</h3></li>
+<li>关于效率仍未确定.</li>
+<li>但const对于类型检查有优势.</li>
+<li>#define是全局的,const可以是局部的.</li>
+<li>按effectiveC++,enum(不能取地址)比const更接近#define.<blockquote>
+<p>参考: <a href="http://blog.csdn.net/xumin330774233/article/details/18261115" target="_blank" rel="external">http://blog.csdn.net/xumin330774233/article/details/18261115</a></p>
+<h2 id="4-黑科技修改强制修改"><a href="#4-黑科技修改强制修改" class="headerlink" title="4. 黑科技修改强制修改:"></a>4. 黑科技修改强制修改:</h2></blockquote>
+</li>
+<li><code>用VS2010实现,g++也行</code></li>
+<li>在C语言中:</li>
+<li>直接强制取const的指针,修改即可.</li>
+<li>在C++中:</li>
+<li>如果定义const的是常量表达式,则会发生常量折叠,编译阶段就替换了(不行).</li>
+<li>但如果不是常量表达式(如自己定义的函数),则也可强制修改.<h3 id="结论-谨慎强制转换-const用常量表达式初始化"><a href="#结论-谨慎强制转换-const用常量表达式初始化" class="headerlink" title="结论:谨慎强制转换; const用常量表达式初始化."></a>结论:谨慎强制转换; const用常量表达式初始化.</h3></li>
+</ul>
+<blockquote>
+<p>辛苦总结,转载请注明出处,共享共成长:<a href="http://blog.leanote.com/willaty" target="_blank" rel="external">http://blog.leanote.com/willaty</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-几种使用情形&quot;&gt;&lt;a href=&quot;#1-几种使用情形&quot; class=&quot;headerlink&quot; title=&quot;1. 几种使用情形&quot;&gt;&lt;/a&gt;1. 几种使用情形&lt;/h2&gt;&lt;h3 id=&quot;1-针对一个变量&quot;&gt;&lt;a href=&quot;#1-针对一个变量&quot; class=&quot;he
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>类型声明</title>
     <link href="http://yoursite.com/2017/04/28/var/"/>
     <id>http://yoursite.com/2017/04/28/var/</id>
     <published>2017-04-28T14:10:05.878Z</published>
-    <updated>2017-04-28T14:20:06.548Z</updated>
+    <updated>2017-04-29T14:56:05.202Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="各种声明符"><a href="#各种声明符" class="headerlink" title="各种声明符:"></a>各种声明符:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">`存储类说明符*: auto、register、static、extern.`</div><div class="line">-&gt;在声明时，存储类修饰符最多只能使用一个，而且无法用在typedef声明中.</div><div class="line">`类型限定符`是指: const、volatile、restrict.</div><div class="line">-&gt;声明中可以使用多个类型限定符，顺序没有限制.</div><div class="line">-&gt;另外，类型限制符可以用在typeof声明中</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<h2 id="各种声明符"><a href="#各种声明符" class="headerlink" title="各种声明符:"></a>各种声明符:</h2><ul>
+<li><strong><code>存储类说明符: auto、register、static、extern.</code></strong></li>
+<li>在声明时，存储类修饰符最多只能使用一个，而且无法用在typedef声明中.</li>
+<li><code>类型限定符</code>是指: const、volatile、restrict.</li>
+<li>声明中可以使用多个类型限定符，顺序没有限制.</li>
+<li>另外，类型限制符可以用在typeof声明中</li>
+</ul>
 <h2 id="类型声明优先级"><a href="#类型声明优先级" class="headerlink" title="类型声明优先级"></a>类型声明优先级</h2><p>括号&gt;后缀&gt;前缀,从内到外阅读即可.<br>函数与数组不能相互派生,大小都不可知.<br><code>只有指针,函数,数组能传递下去定义(函数参数不算),出现内置类型则终止.</code><br><code>英文:pointer to; function(int) returning int; array of</code></p>
 <h2 id="关于const的锁"><a href="#关于const的锁" class="headerlink" title="关于const的锁:"></a>关于const的锁:</h2><p>锁住的是后面的对象; 是<em>则锁内容,是标识符则锁指向.<br>或用英文理解:char const </em>p; //p is a pointer to read-only char.<br>ps: const锁什么什么在先,锁内容:常量指针; 锁指针:指针常量.<br>ps: 在primer中,用顶层const(top-level const)表示锁的是指针,底层(low-level const)锁的是指针指向常量.</p>
 <h2 id="内置类型初始化"><a href="#内置类型初始化" class="headerlink" title="内置类型初始化:"></a>内置类型初始化:</h2><p>在函数内定义的内置对象若没被初始化,值未定义.<br>在函数外定义的,<code>默认初始化为0</code>.<br>列表初始化,C++11新标准,(如果可能出现信息丢失,则会出错,不能初始化)</p>
@@ -45,7 +122,8 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;各种声明符&quot;&gt;&lt;a href=&quot;#各种声明符&quot; class=&quot;headerlink&quot; title=&quot;各种声明符:&quot;&gt;&lt;/a&gt;各种声明符:&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutte
+      &lt;h2 id=&quot;各种声明符&quot;&gt;&lt;a href=&quot;#各种声明符&quot; class=&quot;headerlink&quot; title=&quot;各种声明符:&quot;&gt;&lt;/a&gt;各种声明符:&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;存储类说明符: auto、register、static、extern.
     
     </summary>
     
